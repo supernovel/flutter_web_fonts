@@ -1,5 +1,5 @@
-name: google_fonts_tester
-description: A Flutter application showcasing how to use the google_fonts package.
+name: web_fonts_example
+description: web fonts package example
 publish_to: none
 
 environment:
@@ -8,8 +8,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-  cupertino_icons: ^0.1.2
   web_fonts:
     path: ../
 

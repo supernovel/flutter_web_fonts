@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts_tester/fonts.dart';
+import 'package:web_fonts_example/fonts.dart';
 
 void main() => runApp(MyApp());
 
