@@ -16,7 +16,7 @@ import 'package:web_fonts/fonts/web_fonts_descriptor.dart';
 import 'package:web_fonts/fonts/web_fonts_variant.dart';
 import 'package:web_fonts/web_fonts.dart';
 
-class NotoSansKRFront {
+class NotoSansKRFont {
   static const _fontFamily = 'NotoSansKR';
   static bool _registered = false;
 
@@ -81,7 +81,7 @@ To use font with the default TextStyle:
 ```dart
 Text(
   'This is NotoSansKR',
-  style: NotoSansKRFront.getTextStyle(),
+  style: NotoSansKRFont.getTextStyle(),
 ),
 ```
 
