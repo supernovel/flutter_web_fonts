@@ -9,8 +9,7 @@ import 'fonts/web_fonts_variant.dart';
 
 /// Lazy load fonts
 class WebFonts {
-  static Map<String, Map<WebFontsVariant, WebFontsFile>> _fontsMap =
-      {};
+  static Map<String, Map<WebFontsVariant, WebFontsFile>> _fontsMap = {};
 
   static void register(
       String fontFamily, Map<WebFontsVariant, WebFontsFile> fonts) {
@@ -96,10 +95,8 @@ class WebFonts {
           WebFonts.getTextStyle(fontFamily, textStyle: textTheme?.bodyText1),
       bodyText2:
           WebFonts.getTextStyle(fontFamily, textStyle: textTheme?.bodyText2),
-      caption:
-          WebFonts.getTextStyle(fontFamily, textStyle: textTheme?.caption),
-      button:
-          WebFonts.getTextStyle(fontFamily, textStyle: textTheme?.button),
+      caption: WebFonts.getTextStyle(fontFamily, textStyle: textTheme?.caption),
+      button: WebFonts.getTextStyle(fontFamily, textStyle: textTheme?.button),
       overline:
           WebFonts.getTextStyle(fontFamily, textStyle: textTheme?.overline),
     );
