@@ -5,8 +5,8 @@ import 'web_fonts_variant.dart';
 /// Represents fonts variant in Flutter-specific types.
 class WebFontsFamilyWithVariant {
   const WebFontsFamilyWithVariant({
-    @required this.family,
-    @required this.fontsVariant,
+    required this.family,
+    required this.fontsVariant,
   })  : assert(family != null),
         assert(fontsVariant != null);
 

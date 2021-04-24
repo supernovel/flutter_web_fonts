@@ -6,13 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 
-import 'web_fonts_descriptor.dart';
-import 'web_fonts_family_with_variant.dart';
-import 'web_fonts_variant.dart';
-
 import 'file_io.dart' // Stubbed implementation by default.
     // Concrete implementation if File IO is available.
     if (dart.library.io) 'file_io_desktop_and_mobile.dart' as file_io;
+import 'web_fonts_descriptor.dart';
+import 'web_fonts_family_with_variant.dart';
+import 'web_fonts_variant.dart';
 
 // Keep track of the fonts that are loaded or currently loading in FontLoader
 // for the life of the app instance. Once a font is attempted to load, it does
@@ -31,31 +30,28 @@ void clearCache() => _loadedFonts.clear();
 /// This function has a side effect of loading the font into the [FontLoader],
 /// either by network or from the device file system.
 TextStyle webFontsTextStyle({
-  @required String fontFamily,
-  TextStyle textStyle,
-  Color color,
-  Color backgroundColor,
-  double fontSize,
-  FontWeight fontWeight,
-  FontStyle fontStyle,
-  double letterSpacing,
-  double wordSpacing,
-  TextBaseline textBaseline,
-  double height,
-  Locale locale,
-  Paint foreground,
-  Paint background,
-  List<Shadow> shadows,
-  List<FontFeature> fontFeatures,
-  TextDecoration decoration,
-  Color decorationColor,
-  TextDecorationStyle decorationStyle,
-  double decorationThickness,
-  @required Map<WebFontsVariant, WebFontsFile> fonts,
+  required String fontFamily,
+  TextStyle? textStyle,
+  Color? color,
+  Color? backgroundColor,
+  double? fontSize,
+  FontWeight? fontWeight,
+  FontStyle? fontStyle,
+  double? letterSpacing,
+  double? wordSpacing,
+  TextBaseline? textBaseline,
+  double? height,
+  Locale? locale,
+  Paint? foreground,
+  Paint? background,
+  List<Shadow>? shadows,
+  List<FontFeature>? fontFeatures,
+  TextDecoration? decoration,
+  Color? decorationColor,
+  TextDecorationStyle? decorationStyle,
+  double? decorationThickness,
+  required Map<WebFontsVariant, WebFontsFile> fonts,
 }) {
-  assert(fontFamily != null);
-  assert(fonts != null);
-
   textStyle ??= TextStyle();
   textStyle = textStyle.copyWith(
     color: color,
@@ -82,7 +78,7 @@ TextStyle webFontsTextStyle({
     fontWeight: textStyle.fontWeight ?? FontWeight.w400,
     fontStyle: textStyle.fontStyle ?? FontStyle.normal,
   );
-  final matchedVariant = _closestMatch(variant, fonts.keys);
+  final matchedVariant = _closestMatch(variant, fonts.keys)!;
   final familyWithVariant = WebFontsFamilyWithVariant(
     family: fontFamily,
     fontsVariant: matchedVariant,
@@ -90,7 +86,7 @@ TextStyle webFontsTextStyle({
 
   final descriptor = WebFontsDescriptor(
     familyWithVariant: familyWithVariant,
-    file: fonts[matchedVariant],
+    file: fonts[matchedVariant]!,
   );
 
   loadFontIfNecessary(descriptor);
@@ -124,26 +120,27 @@ Future<void> loadFontIfNecessary(WebFontsDescriptor descriptor) async {
   }
 
   try {
-    Future<ByteData> byteData;
-
     // Check if this font can be loaded from the device file system.
-    byteData = file_io.loadFontFromDeviceFileSystem(familyWithVariantString,
+    final byteData = file_io.loadFontFromDeviceFileSystem(
+        familyWithVariantString,
         ext: descriptor.file.ext);
 
-    if (await byteData != null) {
-      return _loadFontByteData(familyWithVariantString, byteData);
-    }
+    return await _loadFontByteData(familyWithVariantString, byteData);
+  } catch (e) {
+    print('Error: google_fonts was unable to load font $fontName from local storage because the '
+        'following exception occured:\n$e');
+  }
 
-    byteData = _httpFetchFontAndSaveToDevice(
+  try {
+    final byteData = _httpFetchFontAndSaveToDevice(
       familyWithVariantString,
       descriptor.file,
     );
 
-    if (await byteData != null) {
-      return _loadFontByteData(familyWithVariantString, byteData);
-    }
+    return await _loadFontByteData(familyWithVariantString, byteData);
   } catch (e) {
     _loadedFonts.remove(familyWithVariantString);
+
     print('Error: google_fonts was unable to load font $fontName because the '
         'following exception occured:\n$e');
   }
@@ -154,12 +151,9 @@ Future<void> _loadFontByteData(
   String familyWithVariantString,
   Future<ByteData> byteData,
 ) async {
-  final anyFontDataFound = byteData != null && await byteData != null;
-  if (anyFontDataFound) {
-    final fontLoader = FontLoader(familyWithVariantString);
-    fontLoader.addFont(byteData);
-    await fontLoader.load();
-  }
+  final fontLoader = FontLoader(familyWithVariantString);
+  fontLoader.addFont(byteData);
+  await fontLoader.load();
 }
 
 /// Returns [WebFontsVariant] from [variantsToCompare] that most closely
@@ -168,12 +162,12 @@ Future<void> _loadFontByteData(
 /// This logic is derived from the following section of the minikin library,
 /// which is ultimately how flutter handles matching fonts.
 /// https://github.com/flutter/engine/blob/master/third_party/txt/src/minikin/FontFamily.cpp#L149
-WebFontsVariant _closestMatch(
+WebFontsVariant? _closestMatch(
   WebFontsVariant sourceVariant,
   Iterable<WebFontsVariant> variantsToCompare,
 ) {
-  int bestScore;
-  WebFontsVariant bestMatch;
+  int? bestScore;
+  WebFontsVariant? bestMatch;
   for (final variantToCompare in variantsToCompare) {
     final score = _computeMatch(sourceVariant, variantToCompare);
     if (bestScore == null || score < bestScore) {
@@ -193,6 +187,7 @@ Future<ByteData> _httpFetchFontAndSaveToDevice(
   WebFontsFile file,
 ) async {
   final uri = Uri.tryParse(file.url);
+
   if (uri == null) {
     throw Exception('Invalid fontUrl: ${file.url}');
   }

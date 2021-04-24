@@ -19,25 +19,25 @@ class WebFonts {
   /// Applies the font family from given [textStyle].
   static getTextStyle(
     String fontFamily, {
-    TextStyle textStyle,
-    Color color,
-    Color backgroundColor,
-    double fontSize,
-    FontWeight fontWeight,
-    FontStyle fontStyle,
-    double letterSpacing,
-    double wordSpacing,
-    TextBaseline textBaseline,
-    double height,
-    Locale locale,
-    Paint foreground,
-    Paint background,
-    List<ui.Shadow> shadows,
-    List<ui.FontFeature> fontFeatures,
-    TextDecoration decoration,
-    Color decorationColor,
-    TextDecorationStyle decorationStyle,
-    double decorationThickness,
+    TextStyle? textStyle,
+    Color? color,
+    Color? backgroundColor,
+    double? fontSize,
+    FontWeight? fontWeight,
+    FontStyle? fontStyle,
+    double? letterSpacing,
+    double? wordSpacing,
+    TextBaseline? textBaseline,
+    double? height,
+    Locale? locale,
+    Paint? foreground,
+    Paint? background,
+    List<ui.Shadow>? shadows,
+    List<ui.FontFeature>? fontFeatures,
+    TextDecoration? decoration,
+    Color? decorationColor,
+    TextDecorationStyle? decorationStyle,
+    double? decorationThickness,
   }) {
     final fonts = _fontsMap[fontFamily];
 
@@ -71,34 +71,34 @@ class WebFonts {
   }
 
   /// Applies the [fontFamily] in the given [textTheme].
-  static TextTheme getTextTheme(String fontFamily, [TextTheme textTheme]) {
+  static TextTheme getTextTheme(String fontFamily, [TextTheme? textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
 
     return TextTheme(
       headline1:
-          WebFonts.getTextStyle(fontFamily, textStyle: textTheme?.headline1),
+          WebFonts.getTextStyle(fontFamily, textStyle: textTheme.headline1),
       headline2:
-          WebFonts.getTextStyle(fontFamily, textStyle: textTheme?.headline2),
+          WebFonts.getTextStyle(fontFamily, textStyle: textTheme.headline2),
       headline3:
-          WebFonts.getTextStyle(fontFamily, textStyle: textTheme?.headline3),
+          WebFonts.getTextStyle(fontFamily, textStyle: textTheme.headline3),
       headline4:
-          WebFonts.getTextStyle(fontFamily, textStyle: textTheme?.headline4),
+          WebFonts.getTextStyle(fontFamily, textStyle: textTheme.headline4),
       headline5:
-          WebFonts.getTextStyle(fontFamily, textStyle: textTheme?.headline5),
+          WebFonts.getTextStyle(fontFamily, textStyle: textTheme.headline5),
       headline6:
-          WebFonts.getTextStyle(fontFamily, textStyle: textTheme?.headline6),
+          WebFonts.getTextStyle(fontFamily, textStyle: textTheme.headline6),
       subtitle1:
-          WebFonts.getTextStyle(fontFamily, textStyle: textTheme?.subtitle1),
+          WebFonts.getTextStyle(fontFamily, textStyle: textTheme.subtitle1),
       subtitle2:
-          WebFonts.getTextStyle(fontFamily, textStyle: textTheme?.subtitle2),
+          WebFonts.getTextStyle(fontFamily, textStyle: textTheme.subtitle2),
       bodyText1:
-          WebFonts.getTextStyle(fontFamily, textStyle: textTheme?.bodyText1),
+          WebFonts.getTextStyle(fontFamily, textStyle: textTheme.bodyText1),
       bodyText2:
-          WebFonts.getTextStyle(fontFamily, textStyle: textTheme?.bodyText2),
-      caption: WebFonts.getTextStyle(fontFamily, textStyle: textTheme?.caption),
-      button: WebFonts.getTextStyle(fontFamily, textStyle: textTheme?.button),
+          WebFonts.getTextStyle(fontFamily, textStyle: textTheme.bodyText2),
+      caption: WebFonts.getTextStyle(fontFamily, textStyle: textTheme.caption),
+      button: WebFonts.getTextStyle(fontFamily, textStyle: textTheme.button),
       overline:
-          WebFonts.getTextStyle(fontFamily, textStyle: textTheme?.overline),
+          WebFonts.getTextStyle(fontFamily, textStyle: textTheme.overline),
     );
   }
 }

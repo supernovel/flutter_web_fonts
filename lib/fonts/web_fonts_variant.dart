@@ -5,8 +5,8 @@ import 'package:flutter/foundation.dart';
 /// Represents a Google Fonts API variant in Flutter-specific types.
 class WebFontsVariant {
   const WebFontsVariant({
-    @required this.fontWeight,
-    @required this.fontStyle,
+    required this.fontWeight,
+    required this.fontStyle,
   })  : assert(fontWeight != null),
         assert(fontStyle != null);
 
@@ -88,7 +88,7 @@ class WebFontsVariant {
   /// weight: 700, style: italic -> 'BoldItalic'
   ///
   /// See [WebFontsVariant.fromApiFilenamePart] for the inverse function.
-  String toApiFilenamePart() {
+  String? toApiFilenamePart() {
     final weightPrefix = _fontWeightToFilenameWeightParts[fontWeight] ??
         _fontWeightToFilenameWeightParts[FontWeight.w400];
     final italicSuffix = fontStyle == FontStyle.italic ? 'Italic' : '';

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:path/path.dart' as path;
 
 import 'web_fonts_family_with_variant.dart';
@@ -9,10 +8,9 @@ import 'web_fonts_family_with_variant.dart';
 /// information together.
 class WebFontsDescriptor {
   const WebFontsDescriptor({
-    @required this.familyWithVariant,
-    @required this.file,
-  })  : assert(familyWithVariant != null),
-        assert(file != null);
+    required this.familyWithVariant,
+    required this.file,
+  });
 
   final WebFontsFamilyWithVariant familyWithVariant;
   final WebFontsFile file;
@@ -25,5 +23,5 @@ class WebFontsFile {
   final String url;
 
   String get ext =>
-      (path.extension(Uri.tryParse(this.url).path) ?? '').replaceFirst('.', '');
+      (path.extension(Uri.tryParse(this.url)!.path)).replaceFirst('.', '');
 }
