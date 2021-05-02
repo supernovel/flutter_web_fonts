@@ -9,7 +9,7 @@ Future<void> saveFontToDeviceFileSystem(String name, List<int> bytes,
   await file.writeAsBytes(bytes);
 }
 
-Future<ByteData?> loadFontFromDeviceFileSystem(String name,
+Future<ByteData> loadFontFromDeviceFileSystem(String name,
     {String? ext}) async {
   final file = await _localFile(name, ext: ext);
   final fileExists = file.existsSync();
