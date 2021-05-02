@@ -1,5 +1,8 @@
 ## [1.0.0] 
 
+* Fix bytedata type error
+## [1.0.0] 
+
 * Migrate null safety
 ## [0.1.2] 
 
