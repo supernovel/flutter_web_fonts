@@ -1,3 +1,7 @@
+## [1.1.0] 
+
+* Update font load process.
+* migrate to android embedded v2.
 ## [1.0.1] 
 
 * Fix bytedata type error
