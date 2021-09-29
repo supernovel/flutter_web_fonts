@@ -17,3 +17,16 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  fonts:
+    - family: NotoSansCJKKRLocal
+      fonts:
+        - asset: fonts/NotoSansCJKkr-Black.otf
+          weight: 900
+        - asset: fonts/NotoSansCJKkr-Bold.otf
+          weight: 700
+        - asset: fonts/NotoSansCJKkr-Medium.otf
+          weight: 500
+        - asset: fonts/NotoSansCJKkr-Regular.otf
+          weight: 300
+        - asset: fonts/NotoSansCJKkr-Thin.otf
+          weight: 100

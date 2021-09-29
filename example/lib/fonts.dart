@@ -112,3 +112,63 @@ class FiraCode {
     return WebFonts.getTextTheme(_fontFamily, textTheme);
   }
 }
+
+class NotoSansCJKKR {
+  static const _fontFamily = 'NotoSansCJKKRRemote';
+  static bool _registered = false;
+
+  static get fontFamily => _fontFamily;
+
+  static register() {
+    if (_registered) {
+      return;
+    }
+
+    WebFonts.register(_fontFamily, {
+      WebFontsVariant(
+        fontWeight: FontWeight.w300,
+        fontStyle: FontStyle.normal,
+      ): WebFontsFile(
+        'https://raw.githubusercontent.com/supernovel/flutter_web_fonts/master/example/fonts/NotoSansCJKkr-Thin.otf',
+      ),
+      WebFontsVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): WebFontsFile(
+        'https://raw.githubusercontent.com/supernovel/flutter_web_fonts/master/example/fonts/NotoSansCJKkr-Regular.otf',
+      ),
+      WebFontsVariant(
+        fontWeight: FontWeight.w500,
+        fontStyle: FontStyle.normal,
+      ): WebFontsFile(
+        'https://raw.githubusercontent.com/supernovel/flutter_web_fonts/master/example/fonts/NotoSansCJKkr-Medium.otf',
+      ),
+      WebFontsVariant(
+        fontWeight: FontWeight.w700,
+        fontStyle: FontStyle.normal,
+      ): WebFontsFile(
+        'https://raw.githubusercontent.com/supernovel/flutter_web_fonts/master/example/fonts/NotoSansCJKkr-Bold.otf',
+      ),
+      WebFontsVariant(
+        fontWeight: FontWeight.w900,
+        fontStyle: FontStyle.normal,
+      ): WebFontsFile(
+        'https://raw.githubusercontent.com/supernovel/flutter_web_fonts/master/example/fonts/NotoSansCJKkr-Black.otf',
+      ),
+    });
+
+    _registered = true;
+  }
+
+  static TextStyle getTextStyle([TextStyle textStyle]) {
+    register();
+
+    return WebFonts.getTextStyle(_fontFamily, textStyle: textStyle);
+  }
+
+  static TextTheme getTextTheme([TextTheme textTheme]) {
+    register();
+
+    return WebFonts.getTextTheme(_fontFamily, textTheme);
+  }
+}

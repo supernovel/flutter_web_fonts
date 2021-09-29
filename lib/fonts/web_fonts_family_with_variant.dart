@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 
 import 'web_fonts_variant.dart';
 
@@ -7,15 +6,10 @@ class WebFontsFamilyWithVariant {
   const WebFontsFamilyWithVariant({
     required this.family,
     required this.fontsVariant,
-  })  : assert(family != null),
-        assert(fontsVariant != null);
+  });
 
   final String family;
   final WebFontsVariant fontsVariant;
-
-  String toApiFilenamePrefix() {
-    return '$family-${fontsVariant.toApiFilenamePart()}';
-  }
 
   /// Returns a font family name that is modified with additional [fontWeight]
   /// and [fontStyle] descriptions.
