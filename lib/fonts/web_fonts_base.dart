@@ -173,12 +173,14 @@ Future<ByteData> _httpFetchFontAndSaveToDevice(
   }
 
   http.Response response;
+
   try {
     response = await httpClient.get(uri);
   } catch (e) {
     throw Exception('Failed to load font with url: ${file.url}');
   }
-  if (response.statusCode == 200) {
+
+  if (response.statusCode < 400) {
     file_io
         .saveFontToDeviceFileSystem(fontName, response.bodyBytes, ext: file.ext)
         .ignore();
