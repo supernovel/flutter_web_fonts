@@ -140,7 +140,7 @@ Future<ByteData?> _loadFontByteData(WebFontsDescriptor descriptor) async {
   } catch (e) {
     print(
         'Error: unable to load font $familyWithVariantString from local storage because the '
-        'following exception occured:\n$e');
+        'following exception occurred:\n$e');
   }
 
   try {
@@ -152,8 +152,10 @@ Future<ByteData?> _loadFontByteData(WebFontsDescriptor descriptor) async {
     return byteData;
   } catch (e) {
     print('Error: unable to load font $familyWithVariantString because the '
-        'following exception occured:\n$e');
+        'following exception occurred:\n$e');
   }
+
+  return null;
 }
 
 /// Fetches a font with [fontName] from the [fontUrl] and saves it locally if
@@ -171,14 +173,17 @@ Future<ByteData> _httpFetchFontAndSaveToDevice(
   }
 
   http.Response response;
+
   try {
     response = await httpClient.get(uri);
   } catch (e) {
     throw Exception('Failed to load font with url: ${file.url}');
   }
-  if (response.statusCode == 200) {
-    _unawaited(file_io.saveFontToDeviceFileSystem(fontName, response.bodyBytes,
-        ext: file.ext));
+
+  if (response.statusCode < 400) {
+    file_io
+        .saveFontToDeviceFileSystem(fontName, response.bodyBytes, ext: file.ext)
+        .ignore();
 
     return ByteData.view(response.bodyBytes.buffer);
   } else {
@@ -186,5 +191,3 @@ Future<ByteData> _httpFetchFontAndSaveToDevice(
     throw Exception('Failed to load font with url: ${file.url}');
   }
 }
-
-void _unawaited(Future<void> future) {}

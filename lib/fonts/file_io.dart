@@ -8,10 +8,11 @@ import 'dart:typed_data' show ByteData;
 /// Stubbed out version of saveFontToDeviceFileSystem from
 /// `file_io_desktop_and_mobile.dart`.
 Future<void> saveFontToDeviceFileSystem(String name, List<int> bytes,
-        {String? ext}) =>
-    Future.value(null);
+        {String? ext}) async =>
+    throw Exception("Not supported platform");
 
 /// Stubbed out version of loadFontFromDeviceFileSystem from
 /// `file_io_desktop_and_mobile.dart`.
-Future<ByteData> loadFontFromDeviceFileSystem(String name, {String? ext}) =>
-    Future.value(null);
+Future<ByteData> loadFontFromDeviceFileSystem(String name,
+        {String? ext}) async =>
+    throw Exception("Not supported platform");
