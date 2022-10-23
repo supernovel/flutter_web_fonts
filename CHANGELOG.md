@@ -1,3 +1,7 @@
+## [1.1.1] 
+
+* Fix handling for cases where local storage is not supported
+
 ## [1.1.0] 
 
 * Update font load process.
