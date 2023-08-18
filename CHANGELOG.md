@@ -1,3 +1,8 @@
+## [2.0.0]
+
+* Updates text style names
+* Updates minimum supported SDK version to Flutter 3.10/Dart 3.0
+
 ## [1.1.1] 
 
 * Fix handling for cases where local storage is not supported
