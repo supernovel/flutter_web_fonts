@@ -5,11 +5,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "web_fonts",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
             "name": "example",
             "cwd": "example",
             "request": "launch",
