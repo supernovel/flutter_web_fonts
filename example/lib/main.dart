@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:web_fonts_example/fonts.dart';
 
 void main() => runApp(MyApp());
@@ -19,7 +17,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({super.key, required this.title});
 
   final String title;
 
@@ -32,7 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     final TextStyle display1 = Theme.of(context)
         .textTheme
-        .bodyText1
+        .bodyLarge!
         .copyWith(fontWeight: FontWeight.normal);
 
     return Scaffold(

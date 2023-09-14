@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:web_fonts/fonts/web_fonts_descriptor.dart';
 import 'package:web_fonts/fonts/web_fonts_variant.dart';
 import 'package:web_fonts/web_fonts.dart';
@@ -48,13 +47,13 @@ class NotoSansKR {
     _registered = true;
   }
 
-  static TextStyle getTextStyle([TextStyle textStyle]) {
+  static TextStyle getTextStyle([TextStyle? textStyle]) {
     register();
 
     return WebFonts.getTextStyle(_fontFamily, textStyle: textStyle);
   }
 
-  static TextTheme getTextTheme([TextTheme textTheme]) {
+  static TextTheme getTextTheme([TextTheme? textTheme]) {
     register();
 
     return WebFonts.getTextTheme(_fontFamily, textTheme);
@@ -100,13 +99,13 @@ class FiraCode {
     _registered = true;
   }
 
-  static TextStyle getTextStyle([TextStyle textStyle]) {
+  static TextStyle getTextStyle([TextStyle? textStyle]) {
     register();
 
     return WebFonts.getTextStyle(_fontFamily, textStyle: textStyle);
   }
 
-  static TextTheme getTextTheme([TextTheme textTheme]) {
+  static TextTheme getTextTheme([TextTheme? textTheme]) {
     register();
 
     return WebFonts.getTextTheme(_fontFamily, textTheme);
@@ -160,13 +159,13 @@ class NotoSansCJKKR {
     _registered = true;
   }
 
-  static TextStyle getTextStyle([TextStyle textStyle]) {
+  static TextStyle getTextStyle([TextStyle? textStyle]) {
     register();
 
     return WebFonts.getTextStyle(_fontFamily, textStyle: textStyle);
   }
 
-  static TextTheme getTextTheme([TextTheme textTheme]) {
+  static TextTheme getTextTheme([TextTheme? textTheme]) {
     register();
 
     return WebFonts.getTextTheme(_fontFamily, textTheme);

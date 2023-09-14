@@ -1,7 +1,6 @@
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import 'fonts/web_fonts_base.dart';
 import 'fonts/web_fonts_descriptor.dart';
@@ -75,30 +74,58 @@ class WebFonts {
     textTheme ??= ThemeData.light().textTheme;
 
     return TextTheme(
-      headline1:
-          WebFonts.getTextStyle(fontFamily, textStyle: textTheme.headline1),
-      headline2:
-          WebFonts.getTextStyle(fontFamily, textStyle: textTheme.headline2),
-      headline3:
-          WebFonts.getTextStyle(fontFamily, textStyle: textTheme.headline3),
-      headline4:
-          WebFonts.getTextStyle(fontFamily, textStyle: textTheme.headline4),
-      headline5:
-          WebFonts.getTextStyle(fontFamily, textStyle: textTheme.headline5),
-      headline6:
-          WebFonts.getTextStyle(fontFamily, textStyle: textTheme.headline6),
-      subtitle1:
-          WebFonts.getTextStyle(fontFamily, textStyle: textTheme.subtitle1),
-      subtitle2:
-          WebFonts.getTextStyle(fontFamily, textStyle: textTheme.subtitle2),
-      bodyText1:
-          WebFonts.getTextStyle(fontFamily, textStyle: textTheme.bodyText1),
-      bodyText2:
-          WebFonts.getTextStyle(fontFamily, textStyle: textTheme.bodyText2),
-      caption: WebFonts.getTextStyle(fontFamily, textStyle: textTheme.caption),
-      button: WebFonts.getTextStyle(fontFamily, textStyle: textTheme.button),
-      overline:
-          WebFonts.getTextStyle(fontFamily, textStyle: textTheme.overline),
+      displayLarge: WebFonts.getTextStyle(
+        fontFamily,
+        textStyle: textTheme.displayLarge,
+      ),
+      displayMedium: WebFonts.getTextStyle(
+        fontFamily,
+        textStyle: textTheme.displayMedium,
+      ),
+      displaySmall: WebFonts.getTextStyle(
+        fontFamily,
+        textStyle: textTheme.displaySmall,
+      ),
+      headlineMedium: WebFonts.getTextStyle(
+        fontFamily,
+        textStyle: textTheme.headlineMedium,
+      ),
+      headlineSmall: WebFonts.getTextStyle(
+        fontFamily,
+        textStyle: textTheme.headlineSmall,
+      ),
+      titleLarge: WebFonts.getTextStyle(
+        fontFamily,
+        textStyle: textTheme.titleLarge,
+      ),
+      titleMedium: WebFonts.getTextStyle(
+        fontFamily,
+        textStyle: textTheme.titleMedium,
+      ),
+      titleSmall: WebFonts.getTextStyle(
+        fontFamily,
+        textStyle: textTheme.titleSmall,
+      ),
+      bodyLarge: WebFonts.getTextStyle(
+        fontFamily,
+        textStyle: textTheme.bodyLarge,
+      ),
+      bodyMedium: WebFonts.getTextStyle(
+        fontFamily,
+        textStyle: textTheme.bodyMedium,
+      ),
+      bodySmall: WebFonts.getTextStyle(
+        fontFamily,
+        textStyle: textTheme.bodySmall,
+      ),
+      labelLarge: WebFonts.getTextStyle(
+        fontFamily,
+        textStyle: textTheme.labelLarge,
+      ),
+      labelSmall: WebFonts.getTextStyle(
+        fontFamily,
+        textStyle: textTheme.labelSmall,
+      ),
     );
   }
 }
